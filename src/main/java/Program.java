@@ -38,4 +38,12 @@ public class Program {
     public DateTime getEndDate() {
         return endDate;
     }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void addModule(Module module) {
+        modules.add(module);
+    }
 }
