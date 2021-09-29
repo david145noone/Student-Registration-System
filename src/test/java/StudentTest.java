@@ -10,16 +10,27 @@ public class StudentTest {
 
     @Before
     public void setUp() {
-        student  = new Student("John Smith", 25, DateTime.parse("04/02/1995 20:27:05",
-                DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss")));
+        student  = new Student("John Smith", 25, DateTime.parse("07/04/1995",
+                DateTimeFormat.forPattern("dd/MM/yyyy")));
     }
 
     @Test
     public void testStudentName() {
-
         Assert.assertEquals("John Smith", student.getName());
     }
 
+    @Test
+    public void testStudentAge() {
+
+        Assert.assertEquals(25, student.getAge());
+    }
+
+    @Test
+    public void testStudentDOB() {
+
+        Assert.assertEquals(DateTime.parse("07/04/1995",
+                DateTimeFormat.forPattern("dd/MM/yyyy")), student.getDateOfBirth());
+    }
 
 
 }
