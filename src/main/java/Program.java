@@ -1,5 +1,4 @@
 import org.joda.time.DateTime;
-import org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -8,18 +7,16 @@ public class Program {
     private String programName;
     private List<Module> modules;
     private List<Student> students;
-    private DefaultJodaTimeDateFactory defaultJodaTimeDateFactory;
     private DateTime startDate;
     private DateTime endDate;
 
-    public Program (String programName) {
+    public Program (String programName, DateTime startDate, DateTime endDate) {
 
         this.programName = programName;
         this.modules = new ArrayList<>();
         this.students = new ArrayList<>();
-        this.defaultJodaTimeDateFactory = new DefaultJodaTimeDateFactory();
-        this.startDate = defaultJodaTimeDateFactory.newDateTime();
-        this.endDate = defaultJodaTimeDateFactory.newDateTime();
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public String getProgramName() {
