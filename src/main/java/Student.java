@@ -61,5 +61,9 @@ public class Student {
     public List<Module> getModules() {
         return modules;
     }
+
+    public void addModule(Module module) {
+        modules.add(module);
+    }
 }
 

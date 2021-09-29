@@ -32,5 +32,26 @@ public class StudentTest {
                 DateTimeFormat.forPattern("dd/MM/yyyy")), student.getDateOfBirth());
     }
 
+    @Test
+    public void testStudentIdRange() {
+        Assert.assertTrue(student.getId() < 1000000);
+        Assert.assertTrue(student.getId() >= 100000);
+    }
 
+    @Test
+    public void testStudentUserName() {
+        Assert.assertEquals("John Smith1995", student.getUserName());
+    }
+
+    @Test
+    public void testBlankStudentName() {
+        Assert.assertEquals("N/A1995", student.genRandomUsername(null, DateTime.parse("04/02/1995",
+                DateTimeFormat.forPattern("dd/MM/yyyy"))));
+    }
+
+    @Test
+    public void testAddModule() {
+        student.addModule(new Module("CT417"));
+        Assert.assertFalse(student.getModules().isEmpty());
+    }
 }
