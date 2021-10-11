@@ -26,5 +26,13 @@ public class Module {
     public List<Program> getProgramsAssociated() {
         return programsAssociated;
     }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void addProgram(Program program) {
+        programsAssociated.add(program);
+    }
 }
 
