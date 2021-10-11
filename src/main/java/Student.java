@@ -65,5 +65,15 @@ public class Student {
     public void addModule(Module module) {
         modules.add(module);
     }
+
+    @Override
+    public String toString() {
+        return "Student name: " + getName() + "\n" +
+                "Student age: " + getAge() + "\n" +
+                "Student DOB: " + getDateOfBirth().toString() + "\n" +
+                "Student ID: " + getId() + "\n" +
+                "Student username: " + getUserName() + "\n" +
+                "Student's modules: " + getModules();
+    }
 }
 
