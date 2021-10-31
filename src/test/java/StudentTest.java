@@ -51,7 +51,16 @@ public class StudentTest {
 
     @Test
     public void testAddModule() {
-        student.addModule(new Module("CT417"));
-        Assert.assertFalse(student.getModules().isEmpty());
+        Module mockModule = new Module("CT417");
+        student.addModule(mockModule);
+        Assert.assertTrue(student.getModules().contains(mockModule));
+    }
+
+    @Test
+    public void testRemoveModule() {
+        Module mockModule = new Module("CT417");
+        student.addModule(mockModule);
+        student.removeModule(mockModule);
+        Assert.assertFalse(student.getModules().contains(mockModule));
     }
 }

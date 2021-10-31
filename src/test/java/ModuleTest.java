@@ -21,18 +21,62 @@ public class ModuleTest {
     @Test
     public void testAddStudent() {
 
-        module.addStudent(new Student("John Smith",
-                20, DateTime.parse("01/01/1997", DateTimeFormat.forPattern("dd/MM/yyyy"))));
-        Assert.assertEquals(1, module.getStudents().size());
+        Student mockStudent = new Student("John Smith",
+                20, DateTime.parse("01/01/1997", DateTimeFormat.forPattern("dd/MM/yyyy")));
+        module.addStudent(mockStudent);
+        Assert.assertTrue(module.getStudents().contains(mockStudent));
+    }
+
+    @Test
+    public void testRemoveStudent() {
+
+        Student mockStudent = new Student("John Smith",
+                20, DateTime.parse("01/01/1997", DateTimeFormat.forPattern("dd/MM/yyyy")));
+        module.addStudent(mockStudent);
+        module.removeStudent(mockStudent);
+        Assert.assertFalse(module.getStudents().contains(mockStudent));
     }
 
     @Test
     public void testAddProgram() {
 
-        module.addProgram(new Program("Computer Science",
+        Program mockProgram = new Program("Computer Science",
                 DateTime.parse("01/01/1997",
                         DateTimeFormat.forPattern("dd/MM/yyyy")),
                 DateTime.parse("01/01/1997",
-                        DateTimeFormat.forPattern("dd/MM/yyyy"))));
+                        DateTimeFormat.forPattern("dd/MM/yyyy")));
+        module.addProgram(mockProgram);
+        Assert.assertTrue(module.getProgramsAssociated().contains(mockProgram));
+    }
+
+    @Test
+    public void testRemoveProgram() {
+        Program mockProgram = new Program("Computer Science",
+                DateTime.parse("01/01/1997",
+                        DateTimeFormat.forPattern("dd/MM/yyyy")),
+                DateTime.parse("01/01/1997",
+                        DateTimeFormat.forPattern("dd/MM/yyyy")));
+        module.addProgram(mockProgram);
+        module.removeProgram(mockProgram);
+        Assert.assertFalse(module.getProgramsAssociated().contains(mockProgram));
+    }
+
+    @Test
+    public void testPrintModule() {
+
+        Student mockStudent = new Student("John Smith",
+                20, DateTime.parse("01/01/1997", DateTimeFormat.forPattern("dd/MM/yyyy")));
+        module.addStudent(mockStudent);
+        Program mockProgram = new Program("Computer Science",
+                DateTime.parse("01/01/1997",
+                        DateTimeFormat.forPattern("dd/MM/yyyy")),
+                DateTime.parse("01/01/1997",
+                        DateTimeFormat.forPattern("dd/MM/yyyy")));
+        module.addProgram(mockProgram);
+
+        Assert.assertEquals("Module title: CT404\nList of students enrolled: \n"
+                + mockStudent.toString()
+                + "\nList of associated programs: \n"
+                + mockProgram.toString(), module.toString());
     }
 }
